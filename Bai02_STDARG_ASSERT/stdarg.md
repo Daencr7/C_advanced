@@ -90,7 +90,7 @@
   }
   ```
   Trong ví dụ này sẽ thêm sau một chuổi bằng giá trị 0, thiết lập ban đầu giá trị `val` bằng giá trị đếm, bản chất sẽ duyệt cho đến khi gặp giá trị 0 thì nó sẽ dừng lại và trả về giá trị tổng.
-  * Câu hỏi đặt ra vậy trong dãy số có số 0 thì sao ? Trong trường hợp này khi duyệt trong dãy có số 0 thì sẽ bị dừng lại tại số 0 và trả về giá trị. Để khắc phục điều này thì chỉ cần thay đổi phần tử được thêm vào sau cùng là thứ không thể trùng khi nhập dãy vào là được. Chẵn hạn có thể thay đổi thành kí tự `0`.
+  * Câu hỏi đặt ra vậy trong dãy số có số 0 thì sao ? Trong trường hợp này khi duyệt trong dãy có số 0 thì sẽ bị dừng lại tại số 0 và trả về giá trị. Để khắc phục điều này thì chỉ cần thay đổi phần tử được thêm vào sau cùng là thứ không thể trùng khi nhập dãy vào là được. Chẵn hạn có thể thay đổi thành kí tự `0`- Khi sử dụng kí tự thì cần ép kiểu từ `int` sang `char*`. 
 
 
 
