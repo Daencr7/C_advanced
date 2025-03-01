@@ -63,7 +63,7 @@
 #### DEFINE
 -    Dùng để thay thế một chuổi mã nguồn bằng một chuỗi khác trước khi chương trình biên dịch.
 -    Tránh lặp lại, dễ bảo trì.
--  * Cú pháp
+* Cú pháp
     ```cpp
     #define identifier replacement-list
     ```
@@ -91,5 +91,132 @@
      ```
      => `NHD(3)*NHD(3)` : ở trường hợp này kết quả mong muốn là `4*4 = 16` nhưng chương trình nó sẽ ra như này
      khi không sử dụng dấu ngoặc ` 3 + 1 * 3 + 1 ` theo quy tắc ưu tiên của toán tử thì phép ` * ` thực hiện trước rồi mới đến phép ` + ` vì vậy kết quả sẽ bằng `7` trái với mong muốn của chúng ra.
-### 2.3 IF-ELif-ELSE-IFDEF-IFNDEF - CHỈ THỊ BIÊN DỊCH CÓ ĐIỀU KIỆN
+####UNDEF
+-  Dùng để hủy định nghĩa trước đó cho đến undef.
+*  Cú pháp:
+    ```cpp
+    #undef identifier
+    ```
+  Ví dụ:
+  ```cpp
+  #define NHD "Nguyen Huu Dang"
+  ...
+  #undef NHD
+  ```
+  Sau khi `undef NHD` thì `NHD` từ này trở về sau không còn nữa.
+  Nếu ta vẫn sử dụng NHD thì sẽ xảy ra lỗi sau:
+  ![image](https://github.com/user-attachments/assets/a5151a42-36e4-41af-86bb-6b657c9124a6)
 
+### 2.3 IF-ELif-ELSE-IFDEF-IFNDEF - CHỈ THỊ BIÊN DỊCH CÓ ĐIỀU KIỆN
+#### IF-ELif-ELSE
+- Chỉ thị có điều kiện như cấu trúc if else bình thường vậy nhưng ở đây là chỉ thị tiền xử lý.
+* Cú pháp:
+  ```cpp
+  #if constant-expression_1
+    // Đoạn chương trình 1
+  #elif  constant-expression_2
+    // Đoạn chương trình 2
+  #else
+    //Đoạn chương trình 3
+  #endif
+  ```
+  ví dụ
+  ```cpp
+  #include <stdio.h>
+  #define NHD 1
+
+  int main(){   
+    #if NHD == 1
+      printf("DK1 True");    
+    #elif  NHD == 2
+      printf("DK2 True");
+    #else
+      printf("DK con lai True");
+    #endif
+      return 0;
+  }
+  ```
+  - `if` áp dụng cho điều kiện đầu tiên đúng, `elif` thì điều kiện tiếp theo, `else` điều kiện còn lại khác 2 cái trên, `endif` thì kết thúc điều kiện.
+#### IFDEF-IFNDEF
+- Với IFDEF : nếu đã được định nghĩa thì ...
+- Với IFNDEF : nếu chưa được định nghĩa thì ...
+- Hai chỉ thị này được sử dụng trong việc định nghĩa lại các file header cụ thể là xử lý việc xung đột thư viện khi include nhiều thư viện một lúc.
+* Ví dụ:
+  ```cpp
+  FILE A.h
+  source A
+  ```
+  Ta cũng có 2 file cần include file `A.h` là `B`và `C`
+  ```cpp
+  FILE B.h
+  #include "A.h"
+  source B
+
+  FILE C.h
+  #include "A.h"
+  source C
+  ```
+  ```cpp
+  FILE main lại cần File B và C
+  #include "B.h"
+  #include "C.h"
+  source main
+  ```
+  Khi phân tích ra file `main` trở thành
+  ```cpp
+  #include "A.h" // Của file B
+  #include "A.h" // của file C
+  source main
+  ```
+  Vậy file `main` đã phải include 2 lần File `A.h`
+  Trong trường hợp này cần áp dụng IFDEF và IFNDEF, DEFINE để định nghĩa lại.
+  ```cpp
+  FILE A.h
+  #ifndef __A_H__
+  #define __A_H__
+  Source code A
+  #endif // __AH__
+  ```
+### 2.4 MỘT SỐ TOÁN TỬ VỚI MACRO
+- Sử dụng `#`
+```cpp
+#include <stdio.h>
+#define STRINGIZE(x) #x
+#define DATA 40
+int main() {
+ // Sử dụng toán tử #
+printf("The value is: %s\n",
+STRINGIZE(DATA));
+ return 0;
+}
+
+```
+- Sử dụng khai báo các biến động
+```cpp
+#include <stdio.h>
+#define DECLARE_VARIABLE(prefix, number) int prefix##number
+int main() {
+ // Sử dụng macro để khai báo các biến động
+ DECLARE_VARIABLE(var, 1); // int var1;
+ DECLARE_VARIABLE(var, 2); // int var2;
+ // Gán giá trị cho các biến
+ var1 = 10;
+ var2 = 20;
+ // In ra giá trị của các biến
+ printf("var1: %d\n", var1);
+ printf("var2: %d\n", var2);
+ return 0;
+
+```
+- Định nghĩa các macro có thể xử lý một lượng biến đầu vào khác nhau với **variadic macro**
+```cpp
+#define MACRO_NAME(...) 
+```
+Ví dụ 
+```cpp
+#define eprintf(…) fprintf (stderr, __VA_ARGS__)
+// Những đối số được truyền vào eprintf() thì nó sẽ được truyền vào __VA_ARGS__ .
+eprintf ("%s:%d: ", input_file, lineno)
+     // sẽ được thay thế thành
+     fprintf (stderr, "%s:%d: ", input_file, lineno)
+```
