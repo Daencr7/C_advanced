@@ -59,7 +59,40 @@
   ![image](https://github.com/user-attachments/assets/2038fa8d-d043-4106-9daf-afbe8d92e9ec)
   ![image](https://github.com/user-attachments/assets/866ef65d-5850-4aef-97b9-72dee66e88df)
   Việc `ap` thay đổi địa chỉ liên tục 5 lần đó là do số lần lặp cho đối số truyền vào là 5. Và cuối cùng kết quả trả về là `15`.
+  Mỗi lần thay đổi `8 bit` tương đương với `1 byte` bởi vì các tham số được truyền vào trong hàm thì nó được coi là chuổi kí tự được truyền còn dưới dạng một con trỏ `*char` vì vậy việc thay đổi tương ứng với size của char là 1 byte.
+
+* Trường hợp mà tổng tham số ít hơn các tham số truyền vào thì sao?
+  Với trường hợp này stdarg nó cho phép input số lượng tham số tùy ý thì việc chạy như này thì hoàn toàn không lỗi. Nó chỉ tính tổng phụ thuộc vào `num_args` để tính `num_args` số ban đầu trong dãy số truyền vào.
+- Vậy có cách nào truyền số lượng tham số bất kỳ và không bị bó buộc vào biến đếm số lượng tham số không ?
+  => Có cách khác đó là sử dụng kết hợp `stdarg` với `variadic macro`.
+  Ví dụ
+  ```cpp
+  #include <stdio.h>
+  #include <stdarg.h>
+  #define tong(...) sum(__VA_ARGS__, 0) // 0 là giá trị cuối cùng, dùng để kết thúc công việc tính tổng.
+  int sum(int num_args, ...){
+
+    va_list ap;
+    va_start(ap, num_args);
+    
+    int val = num_args;
+    int value;
+    while((value=va_arg(ap, int)) != 0){
+        val += value;
+    }
+    
+    va_end(ap);
+    return val;
+  }
+  int main(){   
+      printf("%d",tong(5,1,2,3,4,5,5,5,5,5,5,5));
+      return 0;
+  }
+  ```
+  Trong ví dụ này sẽ thêm sau một chuổi bằng giá trị 0, thiết lập ban đầu giá trị `val` bằng giá trị đếm, bản chất sẽ duyệt cho đến khi gặp giá trị 0 thì nó sẽ dừng lại và trả về giá trị tổng.
+  * Câu hỏi đặt ra vậy trong dãy số có số 0 thì sao ? Trong trường hợp này khi duyệt trong dãy có số 0 thì sẽ bị dừng lại tại số 0 và trả về giá trị. Để khắc phục điều này thì chỉ cần thay đổi phần tử được thêm vào sau cùng là thứ không thể trùng khi nhập dãy vào là được. Chẵn hạn có thể thay đổi thành kí tự `0`.
+
+
+
+
   
-
-
-
