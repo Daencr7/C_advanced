@@ -57,6 +57,8 @@
   ![image](https://github.com/user-attachments/assets/3cc53071-f821-4918-880e-46e3f68efffc)
   ![image](https://github.com/user-attachments/assets/23eae89c-e97b-4772-9ce6-422388b231b9)
   ![image](https://github.com/user-attachments/assets/2038fa8d-d043-4106-9daf-afbe8d92e9ec)
+  ![image](https://github.com/user-attachments/assets/866ef65d-5850-4aef-97b9-72dee66e88df)
+  Việc `ap` thay đổi địa chỉ liên tục 5 lần đó là do số lần lặp cho đối số truyền vào là 5. Và cuối cùng kết quả trả về là `15`.
   
 
 
