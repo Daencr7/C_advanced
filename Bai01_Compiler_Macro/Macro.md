@@ -12,6 +12,23 @@
   #include <name_file>
   ```
   *Lưu ý sử dụng ngoặc nhọn ` <> `
+  - Ví dụ
+  - ```cpp
+    #include <stdio.h>
+    #include <math.h>
+    
+    int main()
+    {
+        double num = 14.0;
+        double Res = sqrt(num);
+        printf("Square root of %.2f is %.2f\n", num, Res);
+        return 0;
+    }
+    ```
+    * Đoạn code trên dùng chỉ thị tiền xử lý include 2 file thư viện `stdio.h` và `math.h` thuộc loại có sẵn trong file hệ thống chuẩn. Thực hiện tính toán sử dụng các hàm như `sqrt()`, `printf`.
+    * Nếu không có `#include<>` thì có bị gì không ? Sẽ xuất hiện lỗi chưa khai báo các hàm sử dụng trong chương trình.
+      =>![image](https://github.com/user-attachments/assets/c2f157d6-b485-4661-837f-4add49b0e43f)
+     
 ### 2.2 DEFINE
 ### 2.3 IF-ELSE
 ### 2.4 DEFINED-IFDEF-IFNDEFINE-UNDEF
