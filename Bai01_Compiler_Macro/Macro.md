@@ -89,7 +89,7 @@
      ```cpp
      #define NHD(x) x+1
      ```
-     => NHD(3)*NHD(3) : ở trường hợp này kết quả mong muốn là 4*4 = 16 nhưng chương trình nó sẽ ra như này
-     khi không sử dụng dấu ngoặc ` 3 + 1 * 3 + 1 ` theo quy tắc ưu tiên của toán tử thì phép ` * ` thực hiện trước rồi mới đến phép ` + ` vì vậy kết quả sẽ bằng 7 trái với mong muốn của chúng ra.
+     => `NHD(3)*NHD(3)` : ở trường hợp này kết quả mong muốn là `4*4 = 16` nhưng chương trình nó sẽ ra như này
+     khi không sử dụng dấu ngoặc ` 3 + 1 * 3 + 1 ` theo quy tắc ưu tiên của toán tử thì phép ` * ` thực hiện trước rồi mới đến phép ` + ` vì vậy kết quả sẽ bằng `7` trái với mong muốn của chúng ra.
 ### 2.3 IF-ELif-ELSE-IFDEF-IFNDEF - CHỈ THỊ BIÊN DỊCH CÓ ĐIỀU KIỆN
 
