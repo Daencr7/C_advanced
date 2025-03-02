@@ -14,7 +14,7 @@ char error_code[30];
 char *error[] = {"Divide0","Othererror"};
 #define TRY if ((exception_code = setjmp(buf)) == 0)
 #define CATCH(x) else if (exception_code == x) 
-#define THROW(x,error_code) {\
+#define THROW(x,error) {\
     int i = 0;\
     while(error[i]!='\0'){\
         error_code[i] = error[i];\
