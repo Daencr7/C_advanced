@@ -95,6 +95,53 @@ static void stopMotor(PIN pin);
 thuộc về các đối tượng cụ thể của lớp đó. Các đối tượng của lớp sẽ chia sẻ cùng một bản 
 sao của thành viên static, và nó có thể được truy cập mà không cần tạo đối tượng. Nó 
 thường được sử dụng để lưu trữ dữ liệu chung của tất cả đối tượng.
+- NEXT to C++
 ## 5. Volatile
+- Từ khóa volatile trong ngôn ngữ lập trình C/C++ được sử dụng để báo hiệu cho 
+trình biên dịch rằng một biến có thể thay đổi ngẫu nhiên, ngoài sự kiểm soát của chương 
+trình. Việc này ngăn chặn trình biên dịch tối ưu hóa hoặc xóa bỏ các thao tác trên biến 
+đó, giữ cho các thao tác trên biến được thực hiện như đã được định nghĩa.
 
+Ví dụ, giả sử chúng ta có một biến "count" được tăng lên bởi một hàm dịch vụ ngắt (ISR) được kích hoạt bởi một bộ định thời gian phần cứng. Nếu chúng ta không sử dụng từ khóa "volatile" để khai báo "count", trình biên dịch có thể tối ưu mã và lưu trữ giá trị của "count" trong một thanh ghi, giả định rằng nó sẽ không bao giờ thay đổi bên ngoài sự kiểm soát của chương trình. Tuy nhiên, vì ISR có thể sửa đổi "count" bất cứ lúc nào, điều này có thể dẫn đến hành vi không mong muốn và lỗi trong chương trình.
+```cpp
+volatile int count;
+void ISR() {
+    count++;
+}
+int main() {
+    while (1) {
+    // do something
+    }
+    return 0;
+}
+```
 ## 6. Register
+- Bình thường thì dữ liệu chương trình được lưu trong RAM thì RAM, việc muốn lưu trong các thành ghi ở những công việc về phần cứng thì sử dụng register là cần thiết.
+- Tuy nhiên, lưu ý rằng việc sử dụng register chỉ là một đề xuất cho trình biên dịch và 
+không đảm bảo rằng biến sẽ được lưu trữ trong thanh ghi. Trong thực tế, trình biên dịch 
+có thể quyết định không tuân thủ lời đề xuất này.
+```cpp
+#include <time.h>
+#include <stdio.h>
+int a;
+int b;
+int main() {
+
+     clock_t start_time = clock();
+     printf("%d\n",start_time);
+     register int i;
+     
+     for (i = 0; i < 2000000; ++i) {
+     }
+     
+     clock_t end_time = clock();
+     printf("%d\n",end_time);
+     
+     double time_taken = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+     printf("%d",time_taken);
+}
+```
+
+
+
+
