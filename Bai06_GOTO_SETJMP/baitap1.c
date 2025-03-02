@@ -1,35 +1,57 @@
 #include <stdio.h>
 #include <setjmp.h>
 #include <string.h>
-jmp_buf buf;
 
+
+jmp_buf buf;
+enum ErrorCodes { 
+    NO_ERROR, 
+    DIVIDE_ERROR, 
+    OTHER_ERROR, 
+}; 
 int exception_code; 
-char error_code[20];
+char error_code[30];
+char *error[] = {"Divide0","Othererror"};
 #define TRY if ((exception_code = setjmp(buf)) == 0)
 #define CATCH(x) else if (exception_code == x) 
-#define THROW(x,error_code) longjmp(buf, x)
-
+#define THROW(x,error_code) {\
+    int i = 0;\
+    while(error[i]!='\0'){\
+        error_code[i] = error[i];\
+        i++;\
+    }\
+    error_code[i] = '\0';\
+    longjmp(buf, x);\
+}
 double divide(int a, int b) {
-    if (b == 0 && a == 0) THROW(2,"Loi Khac");
-    else if (b == 0)
-        THROW(1,"Loi Chia 0");
-    else
-        return (double)a / b;
+    if (b == 0 && a != 0){
+        THROW(DIVIDE_ERROR,error[0]);
+    }
+    else if(b == 0 && a == 0){
+        THROW(OTHER_ERROR,error[1]);
+    } 
+    else return (double)a / b;
 }
 int main(int argc, char const *argv[])
 {
+
+
     exception_code = 0;
+    int a,b;
+    printf("Enter a = ");scanf("%d",&a);
+    printf("Enter b = ");scanf("%d",&b);
+    // printf("%d",a);
 
     TRY
     {
-        printf("Ket qua: %0.3f\n", divide(1,0));
+        printf("Result: %0.3f\n", divide(a,b));
     }
-    CATCH(1)
-    {   if(exception_code)  strcpy(error_code,"Error: Divide 0");
+    CATCH(DIVIDE_ERROR)
+    {   
         printf("%s\n",error_code);
     }
-    CATCH(2)
-    {   if(exception_code)  strcpy(error_code,"Error: Other");
+    CATCH(OTHER_ERROR)
+    {   
         printf("%s\n",error_code);
     }
     return 0;
