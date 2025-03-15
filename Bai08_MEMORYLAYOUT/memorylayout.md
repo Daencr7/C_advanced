@@ -32,7 +32,7 @@ global là biến toàn cục và number biến tĩnh khác 0.
 ## Unitialized Data - BBS
 - BBS được viết tắt là Block Started by Symbol là phân đoạn dữ liệu chưa được khởi tạo.
 - Vùng này lưu trữ global variables - biến toàn cục và static variables - biến tĩnh ở dạng không được khởi tạo hoặc khởi tạo với giá trị bằng 0.
-* Không được khởi tạo là sao? Không được khởi tạo là biến được khai báo và không gán giá trị cụ thể cho nó, làm nó ở trạng thái chứa giá trị _rác_.
+* Không được khởi tạo là sao? Không được khởi tạo là biến được khai báo mà không gán giá trị cụ thể cho nó, làm nó ở trạng thái chứa giá trị _rác_.
 - Ví dụ:
 ```cpp
 int global;
