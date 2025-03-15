@@ -70,3 +70,4 @@ int getNum2() {
 }
 ```
 ![image](https://github.com/user-attachments/assets/bab1c923-0179-46cc-9252-143ead098998)
+* LƯU Ý HƠN KHI SỬ DỤNG HẾT VÙNG NHỚ NÀY SẼ VƯỚN STACK OVERFLOW NHÉ
