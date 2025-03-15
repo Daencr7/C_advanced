@@ -21,3 +21,4 @@ thì queue lúc này nó đầy không thể thêm phần tử mới ngay cả k
 Với điểm khá khó này đã có Circular Queue khắc phục. Cir Queue hoạt động như vòng tròn vô cực vậy đầy thì dừng rỗng thì có thể thêm vào được đúng nghĩa như cái bàn tròn.
 ![image](https://github.com/user-attachments/assets/950dd0aa-50c3-4220-b396-6c75fcb295f3)
 Cùng tham khảo mã nguồn ở file.c nha.
+Loại cuối cùng là _Priority Queue_ , queue như bao loại khác nhưng nó là ưu tiên. Tức là các phần tử trong queue có thể được sắp xếp lại theo độ ưu tiên mà người dùng muốn cài đặc, có thể là lớn hơn, hoặc bé hơn, nhau có nhiều chữ số hơn,...
