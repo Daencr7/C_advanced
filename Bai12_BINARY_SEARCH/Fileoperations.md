@@ -21,9 +21,10 @@ FILE *file = fopen(const char *file_name, const char *access_mode);
 | a+ | Mở file với chế độ nối và đọc file. Nếu file đã tồn tại thì trả về địa chỉ của phần tử cuối cùng của file. Nếu file chưa tồn tại thì sẽ tạo một file mới. |
 | ab+ | Mở file với chế độ nối và đọc file dưới định dạng binary. Nếu file đã tồn tại thì trả về địa chỉ của phần tử cuối cùng của file. Nếu file chưa tồn tại thì sẽ tạo một file mới. |
 - Đọc File
+  
 | Tên hàm | Mô tả |
 | --------------- | --------------- |
-| fscanf() | Sử dụng chuỗi được định dạng và danh sách đối số biến để lấy đầu vào từ một File |
+| fscanf() | Sử dụng chuỗi được định dạng và danh sách đối số biến để lấy đầu vào từ một File. |
 | fgets() | Copy nội dung trong File vào mảng dùng để lưu trữ với tối đa số lượng phần tử của mảng hoặc tới khi gặp ký tự xuống dòng. |
 | fgetc() | Lấy giá trị tại địa chỉ hiện tại của file, sau đó di chuyển tới địa chỉ tiếp theo. Kiểu trả về là char |
 | fread() | Đọc một số lượng byte được chỉ định từ File .bin |
