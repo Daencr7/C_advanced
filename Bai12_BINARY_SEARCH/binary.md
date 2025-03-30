@@ -35,8 +35,11 @@ printf("Not Found!");
   - Với mỗi phần tử đang duyệt ta duyệt tiếp từ đầu đến phần tử trước đó của phần tử đang duyệt.
   - Do sánh 2 phần tử đang duyệt lần 2 đấy đưa phần tử lớn hơn về sau. Kết quả mỗi lần duyệt lần 2 này là đưa phần tử lớn nhất trong khoảng đó về cuối cùng.
 - Việc sắp xếp như này sẽ có độ phức tạp O(n^2).
+
 ![image](https://github.com/user-attachments/assets/9f2fdf7f-8e7b-4994-b997-a4be3cbcd583)
+
 ![image](https://github.com/user-attachments/assets/e0a88e0b-62eb-42ca-a1f9-b785d1b9aed4)
+
 ![image](https://github.com/user-attachments/assets/2caa82b8-2562-45bf-a8ba-fac80a9096cf)
 ## 2.2 Binary search.
 - Sau khi mảng đã được sắp xếp ta sử dụng 'binary search' để tìm kiếm.
