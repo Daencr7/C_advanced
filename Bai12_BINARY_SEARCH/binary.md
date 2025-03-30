@@ -59,5 +59,98 @@ int binary_search(int arr[], int n, int x){
 ```
 ![image](https://github.com/user-attachments/assets/42789fb7-7da0-4024-8a84-6bef255e1b73)
 
+## 2.3 Binary Search Tree
+- Cấu trúc dữ liệu phân cấp (Tree) là một cấu trúc dữ liệu phi tuyến tính trong đó các phần tử là node được tổ chức theo một thứ bậc phân cấp. Cây là một _cấu trúc dữ liệu_ biểu diễn các quan hệ phân cấp, tìm kiếm, sắp xếp là lưu trữ.
+![image](https://github.com/user-attachments/assets/a51b1c79-7543-4ed3-9d67-bfaa21f7421c)
+- BST là một cấu trúc dữ liệu dạng cây trong đó:
+  - Mỗi nút có tối đa 2 nút con.
+  - Nút con bên trái có giá trị nhỏ hơn nút gốc, nút con bên phải có giá trị lớn hơn nút gốc.
+Dưới đây là chương trình xây dựng một cây nhị phân.
+```cpp
+/***************************************************************************
+ * @file    Build_Tree.c
+ * @brief   Chuyển đổi danh sách liên kết thành cây nhị phân.
+ * @details Chương trình xây dựng danh sách liên kết đơn, sau đó chuyển đổi danh sách
+ *          thành cây nhị phân tìm kiếm (BST). Hỗ trợ thêm node.
+ * @version 1.0
+ * @date    2025-30-03
+ * @author  Dang Nguyen
+ ***************************************************************************/
 
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * @struct  CenterPoint
+ * @brief   Cấu trúc của một node trong cây nhị phân tìm kiếm.
+ */
+struct Node {
+    int key;            /**< Giá trị của node */
+    struct Node* left;  /**< Con trỏ đến node con trái */
+    struct Node* right; /**< Con trỏ đến node con phải */
+};
+/**
+ * @brief   Khoi tao Node moi
+ * @param   key   Gia tri node moi.
+ * @param   left  Con tro left tro den NULL.
+ * @param   right  Con tro right tro den NULL.
+ * @return  struct Node* tra ve kieu cau truc cua mot node.
+ */
+
+struct Node* newNode(int item) {
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+/**
+ * @brief   Thêm node vào cay nhi phan và sắp xếp theo thứ tự tăng dần.
+ * @param   node   Mot node moi duoc them vao.
+ * @param   key  Gia tri cua node moi do.
+ * @return  struct Node*
+ */
+
+struct Node* insert(struct Node* node, int key) {
+    if (node == NULL)
+        return newNode(key);
+    if (node->key == key)
+        return node;
+    if (node->key < key)
+        node->right = insert(node->right, key);
+    else
+        node->left = insert(node->left, key);
+    return node;
+}
+/**
+ * @brief   In ra cay nhi phan
+ * @param   root   Node root coi nhu la mot node goc.
+ * @return  void
+ */
+void inorder(struct Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->key);
+        inorder(root->right);
+    }
+}
+int main() {
+    // Creating the following BST
+    //      50
+    //     /  \
+    //    30   70
+    //   / \   / \
+    //  20 40 60 80
+
+    struct Node* root = newNode(50);
+    root = insert(root, 30);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    root = insert(root, 70);
+    root = insert(root, 60);
+    root = insert(root, 80);
+    inorder(root);
+
+    return 0;
+}
+
+``` 
 
