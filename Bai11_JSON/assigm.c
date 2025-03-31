@@ -7,7 +7,7 @@
 
 
 
-
+// Định nghĩa cấu trúc enum gồm các dạng 6 dạng JSON
 typedef enum {
     JSON_NULL,
     JSON_BOOLEAN,
@@ -17,11 +17,11 @@ typedef enum {
     JSON_OBJECT
 } JsonType;
 
-
+// Định nghĩa cấu trúc struct JsonVAlue
 typedef struct JsonValue {
-    JsonType type;
-    union {
-        int boolean;
+    JsonType type; // Kiểu dữ liệu cấu trúc JsonType
+    union { // kiểu hợp gồm 3 kiểu dữ liệu boolean, number, string với kiểu oject với array được định nghĩa bằng 2 kiểu struct
+        int boolean; 
         double number;
         char *string;
         struct {
@@ -37,11 +37,12 @@ typedef struct JsonValue {
 } JsonValue;
 
 
-
+// khai báo
 JsonValue *parse_json(const char **json);
 
 void free_json_value(JsonValue *json_value);
-
+// hàm này kiểm tra issqace() con trỏ đến địa chỉ chứa space thì check whitespace
+// nếu là whitespace thì dịch dang ô địa chỉ khác
 static void skip_whitespace(const char **json) {
     while (isspace(**json)) {
         (*json)++;
@@ -50,9 +51,10 @@ static void skip_whitespace(const char **json) {
 
 JsonValue *parse_null(const char **json) {
     skip_whitespace(json);
-    if (strncmp(*json, "null", 4) == 0) {
-        JsonValue *value = (JsonValue *) malloc(sizeof(JsonValue));
-        value->type = JSON_NULL;
+    if (strncmp(*json, "null", 4) == 0) { // so sánh Json với Null với n = 4 kí tự
+                                        // với NULL là 4 kí tự nên n = 4
+        JsonValue *value = (JsonValue *) malloc(sizeof(JsonValue)); // Cấp phát một value
+        value->type = JSON_NULL; // chuyển vào JSON_NULL cho value NULL
         *json += 4;
         return value;
     }
@@ -61,6 +63,8 @@ JsonValue *parse_null(const char **json) {
 
 JsonValue *parse_boolean(const char **json) {
     skip_whitespace(json);
+    // kiểu boolean thì kiểu trả về của nó là true hoặc false nên
+    // hàm này sẽ check chuỗi của value là true hay là false bằng cách sử dụng strncmp
     JsonValue *value = (JsonValue *) malloc(sizeof(JsonValue));
     if (strncmp(*json, "true", 4) == 0) {
         value->type = JSON_BOOLEAN;
@@ -80,8 +84,8 @@ JsonValue *parse_boolean(const char **json) {
 JsonValue *parse_number(const char **json) {
     skip_whitespace(json);
     char *end;
-
-
+// với kiểu dữ liệu số
+// sử dụng strtod() trả về số double với *json là chuổi đó mà &end là địa chỉ kết thúc khi là số
     double num = strtod(*json, &end);
     if (end != *json) {
         JsonValue *value = (JsonValue *) malloc(sizeof(JsonValue));
@@ -95,18 +99,19 @@ JsonValue *parse_number(const char **json) {
 
 JsonValue *parse_string(const char **json) {
     skip_whitespace(json);
+// là kiểu string như dạng địa chỉ, tên ,...
+// Mỗi cái kiểu string thì cách bởi dấu \
 
-
-    if (**json == '\"') {
-        (*json)++;
+    if (**json == '\"') { // check địa chỉ đang là \
+        (*json)++; // dịch tới ô tiếp theo
         const char *start = *json;
-        while (**json != '\"' && **json != '\0') {
+        while (**json != '\"' && **json != '\0') { // đếm số ô cho đến rỗng hoặc \
             (*json)++;
         }
         if (**json == '\"') {
-            size_t length = *json - start; // 3
+            size_t length = *json - start; // 3 // cắt chiều dài string
             char *str = (char *) malloc((length + 1) * sizeof(char));
-            strncpy(str, start, length);
+            strncpy(str, start, length); //coppy start vào str với độ dài length
             str[length] = '\0';
 
 
@@ -124,10 +129,11 @@ JsonValue *parse_string(const char **json) {
 
 JsonValue *parse_array(const char **json) {
     skip_whitespace(json);
+// nếu là arr thì bắt đầu với [ kết thúc với ]
     if (**json == '[') {
         (*json)++;
         skip_whitespace(json);
-
+        // khởi tạo đếm ban đầu ở vị trí 0 với value là NUll
         JsonValue *array_value = (JsonValue *)malloc(sizeof(JsonValue));
         array_value->type = JSON_ARRAY;
         array_value->value.array.count = 0;
@@ -138,7 +144,8 @@ JsonValue *parse_array(const char **json) {
         arr[0] = 30;
         arr[1] = 70;
         */
-
+        // thực hiện dịch đến ô tiếp theo thêm vào ô array tiếp theo bằng cách
+        // tăng count và gán vaule
         while (**json != ']' && **json != '\0') {
             JsonValue *element = parse_json(json); // 70
             if (element) {
@@ -154,6 +161,7 @@ JsonValue *parse_array(const char **json) {
                 (*json)++;
             }
         }
+        // kết thúc với kí tự ] 
         if (**json == ']') {
             (*json)++;
             return array_value;
@@ -167,17 +175,16 @@ JsonValue *parse_array(const char **json) {
 
 JsonValue *parse_object(const char **json) {
     skip_whitespace(json);
+    // một object bắt đầu với { 
     if (**json == '{') {
         (*json)++;
         skip_whitespace(json);
-
+        khởi tạo oject mặc định
         JsonValue *object_value = (JsonValue *)malloc(sizeof(JsonValue));
         object_value->type = JSON_OBJECT;
         object_value->value.object.count = 0;
         object_value->value.object.keys = NULL;
         object_value->value.object.values = NULL;
-
-
 
         while (**json != '}' && **json != '\0') {
             JsonValue *key = parse_string(json);
