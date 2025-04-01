@@ -21,10 +21,10 @@ Giải thích một số thuật ngữ :
 ### 2.1 Tạo mới một thread.
 Cú pháp hàm:
 ```pthread_create(pthread_t *th, const pthread_attr_t *attr, void *(* func)(void *), void *arg)```
-Tham số 1: một con trỏ kiểu pthread_t, đại diện cho một thread mới được tạo ra.
-Tham số 2: một thuộc tính của thread, đặt là NULL nếu giữ thuộc tính mặc định.
-Tham số 3: địa chỉ hàm muốn thực thi.
-Tham số 4: một con trỏ đối số cho hàm thuộc kiểu void.
++ Tham số 1: một con trỏ kiểu pthread_t, đại diện cho một thread mới được tạo ra.
++ Tham số 2: một thuộc tính của thread, đặt là NULL nếu giữ thuộc tính mặc định.
++ Tham số 3: địa chỉ hàm muốn thực thi.
++ Tham số 4: một con trỏ đối số cho hàm thuộc kiểu void.
 ### 2.2 Dừng một thread
 ### 2.2.1 Tự dừng
 - Tự dừng tực là khi thread đó thực hiện xong xử lý của nó, nó kết thúc.
@@ -34,3 +34,6 @@ Tham số 4: một con trỏ đối số cho hàm thuộc kiểu void.
 ### 2.2.2 Dừng bắt buộc
 - Cú pháp: ```pthread_cancel()```
 - Thread sẽ bị hủy bỏ ngay tức khắc.
+
+# END
+Tham khảo chương trình sử dụng Pthread file `main.c`
