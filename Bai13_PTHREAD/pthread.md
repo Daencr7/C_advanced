@@ -17,6 +17,7 @@ Giải thích một số thuật ngữ :
 
 ### Mutex
 - Mutial Exclusion là loại trừ lẫn nhau, đảm bảo một task duy nhất được quyền truy cập vào tài nguyên tại một thời điểm. Bản chất là Flag hay một Key .
+
 ![image](https://github.com/user-attachments/assets/ef6ccf61-43bb-44dd-a53f-4fb660740049)
 ## 2.Thao tác
 ### 2.1 Tạo mới một thread.
