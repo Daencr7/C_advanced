@@ -12,6 +12,7 @@ Giải thích một số thuật ngữ :
 - Process là một nhóm các thread có liên kết, thực thi cùng nhau trên cùng một môi trường và cũng chia sẽ tài nguyên trên đó với nhau (memory space).
 - Mỗi một thead chỉ có thể tồn tại trong một process.
 - Thread dùng thông qua việc `parallelism-song song`, thực tế chỉ có một thread được thực thi tại một thời điểm bởi CPU, nhưng CPU có thể chuyển đổi nhanh chóng giữa các thread để tạo hiệu ứng giống như các thread đang được thực thi song song với nhau.
+
 ![image](https://github.com/user-attachments/assets/269ba77c-d649-48b0-b0f0-51acef80cac6)
 
 ### Mutex
