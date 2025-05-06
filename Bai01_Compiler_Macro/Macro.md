@@ -1,4 +1,4 @@
-# MARCRO
+# MACRO
 ## 1. Macro là gì
 - Macro là một đoạn mã trong chương trình được thay thể bằng giá trị của macro. Dễ hiểu hơn nó thứ định nghĩa lại thứ phức tạp, dài dòng thành đơn giản hơn trong chương trình.
 ## 2. Một số dạng marcro được sử dụng chính.
