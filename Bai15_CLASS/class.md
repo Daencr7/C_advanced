@@ -1,10 +1,10 @@
 # CLASS
 ## Class là gì?
-    Class hay lớp là một mô tả trừu tượng của nhóm các đối tượng có cùng bản chất. Mỗi đối tượng là một thể hiện cụ thể trong những mô tả trừu tượng này.
+Class hay lớp là một mô tả trừu tượng của nhóm các đối tượng có cùng bản chất. Mỗi đối tượng là một thể hiện cụ thể trong những mô tả trừu tượng này.
 ### Đặc điểm của class
-    Một class gồm thuộc tính-property và phương thức-method.
-    Class thực chất là một kiểu dữ liệu do người dùng lập trình định nghĩa.
-    Ví dụ : Class xe hơi, xe hơi có thể có nhiều loại khác nhau, cấu tạo khác nhau theo các hãng khác nhau nhưng nhìn chung chúng có 4 bánh, chúng có độ cơ, vô lăng điều khiển,...Thì class xe hơi nó quy định một mẫu chúng như vậy.
+Một class gồm thuộc tính-property và phương thức-method.
+Class thực chất là một kiểu dữ liệu do người dùng lập trình định nghĩa.
+Ví dụ : Class xe hơi, xe hơi có thể có nhiều loại khác nhau, cấu tạo khác nhau theo các hãng khác nhau nhưng nhìn chung chúng có 4 bánh, chúng có độ cơ, vô lăng điều khiển,...Thì class xe hơi nó quy định một mẫu chúng như vậy.
 ## Sử dụng class
 ### Cú pháp khai báo
 ```cpp
