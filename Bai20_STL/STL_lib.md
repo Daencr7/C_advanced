@@ -47,14 +47,16 @@ push_back() : Thêm phần tử vào cuối vector. Độ phức tạp O(1).
 pop_back() : Xóa phần tử cuối cùng trong vector. Độ phức tạp O(1).
 - Hàm truy cập phần tử:
 
-![alt text](image-1.png)
+![image](https://github.com/user-attachments/assets/7fb5b802-55d2-4959-9436-55fe90fc0c2d)
+
 - Hàm kích thước:
 
-![alt text](image-2.png)
+![image](https://github.com/user-attachments/assets/38bbcaf6-4f8d-4fcc-9876-b90b0b4aa5bf)
 
 - Hàm thêm, chèn, xóa:
 
-![alt text](image-3.png)
+![image](https://github.com/user-attachments/assets/8085bf47-00d0-4d38-ba64-2172b52c47b9)
+
 
 Sử dụng vector:
 
@@ -86,7 +88,9 @@ Cú pháp:
 set<data_type> set_name;
 ```
 Một số hàm cơ bản của set:
-![alt text](image-4.png)
+
+![image](https://github.com/user-attachments/assets/c19b8b4c-8267-410a-bbf0-21867b799324)
+
 ### Map
 Map là một container lưu trữ dữ liệu tương tự như một từ điển, mỗi phần tử trong map là một cặp key - value.
 
