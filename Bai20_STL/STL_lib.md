@@ -162,7 +162,8 @@ Có 4 iterator chính trong vector mà cần nắm được :
 3. rbegin() : Iterator ngược trỏ tới phần tử cuối cùng trong vector.
 4. rend() : Iterator ngược trỏ tới phần tử trước phần tử đầu tiên trong vector.
 
-![alt text](image-5.png)
+![image](https://github.com/user-attachments/assets/014d2e1f-657f-4bfc-ab5d-3ba5169d3fa9)
+
 
 Cú pháp khai báo iterator:
 ```cpp
