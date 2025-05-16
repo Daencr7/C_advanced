@@ -88,7 +88,8 @@ int main(){
     return 0;
 }
 ```
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/bfb093cd-8e9c-4ea1-805d-9eef562f87a3)
+
 - > Lỗi
 ```cpp
 #include <iostream>
