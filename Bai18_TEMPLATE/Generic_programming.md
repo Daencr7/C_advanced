@@ -192,3 +192,103 @@ class Derived : public Base<T>{
 So sánh templaTe với macro
 
 ![image](https://github.com/user-attachments/assets/a779f242-b2eb-45c6-b0d3-b3d841e2ffd3)
+
+#### Template Specialization
+Template Specialization cho phép tùy chỉnh hành vi của template cho một kiểu dữ liệu cụ thể.
+
+Khi chúng ta viết bất kỳ hàm hoặc lớp dựa trên mẫu nào, trình biên dịch sẽ tạo ra một bản sao của hàm/lớp đó bất cứ khi nào trình biên dịch thấy nó được sử dụng cho một kiểu dữ liệu mới hoặc tập hợp các kiểu dữ liệu mới (trong trường hợp có nhiều đối số mẫu).
+
+Nếu có một phiên bản chuyên biệt, trình biên dịch trước tiên sẽ kiểm tra với phiên bản chuyên biệt và sau đó là mẫu chính. Trình biên dịch trước tiên kiểm tra với phiên bản chuyên biệt nhất bằng cách khớp tham số được chuyển với (các) kiểu dữ liệu được chỉ định trong một phiên bản chuyên biệt.
+Cú pháp:
+```cpp
+template <>
+class name_of_class<data_type>
+{
+    private:
+        data_type var;
+}
+```
+Ví dụ:
+```cpp
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Test
+{
+  // Data members of test
+public:
+   Test()
+   {
+       // Initialization of data members
+       cout << "General template object \n";
+   }
+   // Other methods of Test
+};
+
+template <>
+class Test <int>
+{
+public:
+   Test()
+   {
+       // Initialization of data members
+       cout << "Specialized template object\n";
+   }
+};
+
+int main()
+{
+    Test<int> a;
+    Test<char> b;
+    Test<float> c;
+    return 0;
+}
+```
+Ví dụ này là một specialization template cho kiểu `int`.
+#### Variadic Template
+Variadic Template cho phép tạo các hàm template hoặc lớp template có thể nhận một số lượng tham số không xác định. Điều này giúp bạn viết mã linh hoạt hơn khi làm việc với danh sách tham số có kích thước động.
+
+Cú pháp:
+```cpp
+template(typename arg, typename... args)
+return_type function_name(arg var1, args... var2)
+```
+Ví dụ:
+```cpp
+// C++ program to demonstrate working of
+// Variadic function Template
+#include <iostream>
+using namespace std;
+
+// To handle base case of below recursive
+// Variadic function Template
+void print()
+{
+    cout << "I am empty function and "
+            "I am called at last.\n";
+}
+
+// Variadic function Template that takes
+// variable number of arguments and prints
+// all of them.
+template <typename T, typename... Types>
+void print(T var1, Types... var2)
+{
+    cout << var1 << endl;
+
+    print(var2...);
+}
+
+// Driver code
+int main()
+{
+    print(1, 2, 3.14,
+          "Pass me any "
+          "number of arguments",
+          "I will print\n");
+
+    return 0;
+}
+```
+Ví dụ sử dụng variadic template cho hàm print với nhiều tham số được truyền vào khi không biết số lượng tham số đó là bao nhiêu.
