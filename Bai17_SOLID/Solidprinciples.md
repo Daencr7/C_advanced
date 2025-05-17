@@ -277,5 +277,5 @@ public:
 };
 
 ```
-
+## Mỗi quan hệ của các nguyên tắc trong SOLID
 ![image](https://github.com/user-attachments/assets/7979631b-062f-4fb3-a5a7-b68622278ff2)
