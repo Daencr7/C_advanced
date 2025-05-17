@@ -7,5 +7,6 @@ Cụ thể, đối tượng sẽ mang trạng thái riêng thông qua các phư�
 
 Hãy tưởng tượng chúng ta xây dựng trò chơi tên Lửa Không Miễn Phí và có các nhân vật giao tiếp với nhau. Chúng ta muốn áp dụng tính đóng gói nên đã gói gọn tất cả những gì liên quan tới các nhân vật với nhau thành một lớp nhân vật, nó trông như thế này:
 
-![Uploading image.png…]()
+
+![image](https://github.com/user-attachments/assets/9f38a7e0-4965-4657-87be-e3963c4c7ecb)
 
