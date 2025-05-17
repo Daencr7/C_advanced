@@ -31,6 +31,7 @@ Dẫn xuất private quy định phạm vi truy nhập như sau:
 - Các thành phần protected của lớp cơ sở trở thành các thành phần private của lớp dẫn xuất 
 - Các thành phần public của lớp cơ sở cũng trở thành các thành phần private của lớp dẫn xuất. 
 - Phạm vi truy nhập từ bên ngoài vào lớp dẫn xuất được tuân thủ như quy tắc phạm vi lớp thông thường. 
+
 `Dẫn xuất protected`
 Dẫn xuất protected quy định phạm vi truy nhập như sau: 
 
@@ -38,6 +39,7 @@ Dẫn xuất protected quy định phạm vi truy nhập như sau:
 - Các thành phần protected của lớp cơ sở trở thành các thành phần protected của lớp dẫn xuất 
 - Các thành phần public của lớp cơ sở cũng trở thành các thành phần protected của lớp dẫn xuất. 
 - Phạm vi truy nhập từ bên ngoài vào lớp dẫn xuất được tuân thủ như quy tắc phạm vi lớp thông thường. 
+
 `Dẫn xuất public`
 Dẫn xuất public quy định phạm vi truy nhập như sau: 
 
