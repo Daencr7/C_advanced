@@ -45,5 +45,7 @@ Dẫn xuất public quy định phạm vi truy nhập như sau:
 - Các thành phần protected của lớp cơ sở trở thành các thành phần protected của lớp dẫn xuất. 
 - Các thành phần public của lớp cơ sở vẫn là các thành phần public của lớp dẫn xuất. 
 - Phạm vi truy nhập từ bên ngoài vào lớp dẫn xuất được tuân thủ như quy tắc phạm vi lớp thông thường.
+
 Tổng hợp:
+
 ![image](https://github.com/user-attachments/assets/c75ef660-b541-4d53-8177-f9b3ac74858a)
