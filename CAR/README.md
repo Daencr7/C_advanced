@@ -15,6 +15,7 @@ Car Dashboard là hệ thống mô phỏng điều khiển xe ô tô tập trung
 ## Cấu trúc thư mục
 Car_Dashboard_Project
 Car_Dashboard_Project/
+```
 ├── App/ # Application layer
 │ ├── Inc/ # Header files (interfaces)
 │ │ ├── DashboardController.hpp
@@ -39,3 +40,4 @@ Car_Dashboard_Project/
 │ └── Database.csv
 │
 └── README.md # Project documentation
+```
